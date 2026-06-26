@@ -42,8 +42,8 @@ None
 | Column | Type | Description |
 |---------|------|-------------|
 | customer_id | INTEGER | Unique customer identifier |
-| city | TEXT | Customer city |
-| signup_date | DATE | Customer registration date |
+| city | VARCHAR | Customer city |
+| signup_date | VARCHAR | Customer registration date |
 
 ---
 
@@ -63,9 +63,9 @@ order_id
 
 ### Foreign Keys
 
-- customer_id
-- store_id
-- promotion_id
+- customers.customer_id
+- stores.store_id
+- promotions.promotion_id
 
 ### Columns
 
@@ -74,7 +74,7 @@ order_id
 | order_id | INTEGER | Unique order identifier |
 | customer_id | INTEGER | Customer placing the order |
 | store_id | INTEGER | Store processing the order |
-| order_date | DATE | Date when the order was created |
+| order_date | VARCHAR | Date when the order was created |
 | promotion_id | INTEGER | Promotion applied to the order |
 
 ---
@@ -95,8 +95,8 @@ order_item_id
 
 ### Foreign Keys
 
-- order_id
-- product_id
+- orders.order_id
+- products.product_id
 
 ### Columns
 
@@ -126,7 +126,7 @@ payment_id
 
 ### Foreign Keys
 
-- order_id
+- orders.order_id
 
 ### Columns
 
@@ -154,8 +154,8 @@ product_id
 
 ### Foreign Keys
 
-- category_id
-- supplier_id
+- categories.category_id
+- suppliers.supplier_id
 
 ### Columns
 
@@ -191,7 +191,7 @@ None
 | Column | Type | Description |
 |---------|------|-------------|
 | category_id | INTEGER | Unique category identifier |
-| category_name | TEXT | Name of the category |
+| category_name | VARCHAR | Name of the category |
 
 ---
 
@@ -218,7 +218,7 @@ None
 | Column | Type | Description |
 |---------|------|-------------|
 | supplier_id | INTEGER | Unique supplier identifier |
-| country | TEXT | Country where the supplier is based |
+| country | VARCHAR | Country where the supplier is based |
 
 ---
 
@@ -245,7 +245,7 @@ None
 | Column | Type | Description |
 |---------|------|-------------|
 | store_id | INTEGER | Unique store identifier |
-| city | TEXT | City where the store is located |
+| city | VARCHAR | City where the store is located |
 
 ---
 
@@ -265,7 +265,7 @@ employee_id
 
 ### Foreign Keys
 
-- store_id
+- stores.store_id
 
 ### Columns
 
@@ -320,7 +320,7 @@ shipment_id
 
 ### Foreign Keys
 
-- order_id
+- orders.order_id
 
 ### Columns
 
@@ -328,7 +328,7 @@ shipment_id
 |---------|------|-------------|
 | shipment_id | INTEGER | Unique shipment identifier |
 | order_id | INTEGER | Order being shipped |
-| status | TEXT | Current shipment status (e.g. shipped, delivered, late) |
+| status | VARCHAR | Current shipment status (e.g. shipped, delivered, late) |
 
 ---
 
@@ -348,7 +348,7 @@ return_id
 
 ### Foreign Keys
 
-- order_item_id
+- order_items.order_item_id
 
 ### Columns
 
