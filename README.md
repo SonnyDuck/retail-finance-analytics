@@ -98,12 +98,15 @@ retail-finance-analytics/
 │   ├── 02_data_dictionary.md
 │   ├── 03_order_lifecycle.md
 │   ├── 04_database_schema.md
-│   └── 05_system_architecture.md
+│   ├── 05_system_architecture.md
+│   ├── 06_data_assumptions.md
+│   └── 07_metric_definitions.md
 ├── powerbi/
 ├── sql/
 │   ├── analysis/
 │   ├── exploration/
 │   ├── quality/
+│   │   └── data_validations.sql
 │   └── reporting/
 ├── LICENSE
 └── README.md
