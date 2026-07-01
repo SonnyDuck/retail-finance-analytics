@@ -94,6 +94,8 @@ retail-finance-analytics/
 │   ├── diagrams/
 │   │   └── erd.svg
 │   ├── images/
+│   ├── reports/
+│   │   └── eda_001_dataset_overview.md
 │   ├── 01_business_requirement.md
 │   ├── 02_data_dictionary.md
 │   ├── 03_order_lifecycle.md
@@ -105,6 +107,7 @@ retail-finance-analytics/
 ├── sql/
 │   ├── analysis/
 │   ├── exploration/
+│   │   └── eda_001_dataset_overview.sql
 │   ├── quality/
 │   │   └── data_validations.sql
 │   └── reporting/
