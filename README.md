@@ -8,7 +8,6 @@ A retail analytics pipeline built on a 1.5M+ row, 12-table PostgreSQL dataset �
 
 ![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-336791)
 ![SQL](https://img.shields.io/badge/Query-SQL-blue)
-![Power BI](https://img.shields.io/badge/Dashboard-Power%20BI-F2C811)
 
 
 </div>
@@ -17,9 +16,17 @@ A retail analytics pipeline built on a 1.5M+ row, 12-table PostgreSQL dataset �
 
 ## Project Overview
 
-This project analyzes a retail transaction dataset spanning customers, orders, products, payments, shipments, and returns to understand sales performance, customer behavior, and operational efficiency. Raw data is loaded into PostgreSQL, where SQL is used to validate data quality, explore patterns, and transform transactional records into business-ready metrics.
+This project demonstrates an end-to-end SQL analytics workflow using a synthetic retail dataset 
+containing over 1.5 million records across 12 relational tables.
 
-The transformed data is then connected to Power BI to build interactive dashboards, allowing business stakeholders to monitor key performance indicators and explore trends without writing queries themselves. The goal of this project is to demonstrate an end-to-end analytics workflow, from raw data to a decision-ready dashboard, using tools commonly found in real-world data analyst roles.
+Rather than treating the dataset as analysis-ready, the project applies a structured validation 
+framework — covering data quality, referential integrity, and cross-table financial consistency — 
+before drawing any business conclusions. This reflects how analytics work is done in practice: 
+trust is earned through evidence, not assumed from column names.
+
+The financial validation phase uncovered that several key fields — including payment amounts and 
+refund values — do not reconcile with transactional data at the row level, a finding that informed 
+which fields were selected as the project's source of truth for all downstream analysis.
 
 ## Dataset Summary
 
@@ -33,17 +40,30 @@ The project uses a simulated retail transaction dataset consisting of:
 | order Items | 600,000 |
 | products | 10,000 |
 
-## Business Objectives
+## Project Objectives
 
-This project aims to answer the following business questions:
+This project aims to demonstrate an end-to-end SQL analytics workflow by:
 
-- What are the overall sales and revenue trends over time?
-- Which products and categories generate the most revenue?
-- How does customer behavior vary across cities and segments?
-- Which stores and employees are performing best?
-- How effective are promotions at driving order volume?
-- What is the return rate, and which products are returned most often?
-- How reliable is order fulfillment, based on shipment status?
+- Designing and documenting a relational database structure.
+- Performing data profiling and exploratory analysis.
+- Validating business rules and relational consistency.
+- Assessing the reliability of financial-related fields.
+- Documenting assumptions before business analysis.
+- Determining whether the dataset is suitable for downstream reporting and dashboard development.
+
+## Intended Business Questions
+
+The original objective of the project was to answer business questions such as:
+
+- Overall sales trends
+- Product and category performance
+- Customer purchasing behavior
+- Store performance
+- Promotion effectiveness
+- Return analysis
+- Shipment performance
+
+However, during the data validation phase, several critical inconsistencies were identified in the financial data. As a result, these analyses were intentionally postponed to avoid generating misleading business insights.
 
 ## Tech Stack
 
@@ -52,7 +72,6 @@ This project aims to answer the following business questions:
 | Database | PostgreSQL |
 | SQL IDE | DBeaver |
 | Querying & Transformation | SQL |
-| Visualization | Power BI |
 | Database Modeling | dbdiagram.io |
 | Documentation | Markdown |
 | Version Control | Git & GitHub |
@@ -95,7 +114,8 @@ retail-finance-analytics/
 │   │   └── erd.svg
 │   ├── images/
 │   ├── reports/
-│   │   └── eda_001_dataset_overview.md
+│   │   ├── eda_001_dataset_overview.md
+│   │   └── eda_002_financial_validation.md
 │   ├── 01_business_requirement.md
 │   ├── 02_data_dictionary.md
 │   ├── 03_order_lifecycle.md
@@ -107,7 +127,8 @@ retail-finance-analytics/
 ├── sql/
 │   ├── analysis/
 │   ├── exploration/
-│   │   └── eda_001_dataset_overview.sql
+│   │   ├── eda_001_dataset_overview.sql
+│   │   └── eda_002_financial_validation.sql
 │   ├── quality/
 │   │   └── data_validations.sql
 │   └── reporting/
@@ -125,11 +146,24 @@ retail-finance-analytics/
 - [x] Database Schema
 - [x] System Architecture
 - [x] Data Quality Assessment
-- [ ] SQL Exploratory Data Analysis
-- [ ] Analytical SQL Views
-- [ ] Power BI Dashboard
-- [ ] Business Insights
+- [x] SQL Exploratory Data Analysis
+- [x] Financial Data Validation
+- [x] Data Trust Assessment
+- [x] Final Project Documentation
 
 ---
 
-**Status**: 🚧 Project in Progress
+## Project Outcome
+
+Although the relational structure of the dataset is well designed, the financial validation process revealed multiple inconsistencies across key business fields.
+
+The investigation found that several financial attributes, including payment amounts, refund values, and product pricing, could not be reliably reconciled with transactional records.
+
+Rather than producing potentially misleading dashboards, the project intentionally concludes after documenting these findings.
+
+This project demonstrates an important real-world analytics principle:
+
+> Data should be validated before it is analyzed.
+
+
+**Status**: ✅ Project Complete
